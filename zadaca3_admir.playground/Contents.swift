@@ -138,3 +138,12 @@ for years in ages{
         break
     }
 }
+
+
+//FUNKCIJE
+
+func add(a: Int, b:Int)->Int{
+    return a+b
+}
+//pozivanje
+add(3, b:2)
