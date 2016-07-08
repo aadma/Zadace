@@ -140,6 +140,7 @@ for years in ages{
 }
 
 
+
 //FUNKCIJE
 
 func add(a: Int, b:Int)->Int{
@@ -147,3 +148,100 @@ func add(a: Int, b:Int)->Int{
 }
 //pozivanje
 add(3, b:2)
+//funkcija moze vratiti i opcional  func(parametar)->(return type)?{}
+
+//Imenovanje argumenata
+
+func someFunk(one: String, two:Int){
+//some code
+}
+someFunk("Hello", two: 4)
+
+//Eksterni i interni nazivi
+
+func sayHello(to person: String, and otherPerson: String)->String{
+    return "Hello to \(person) and \(otherPerson)"
+}
+print(sayHello(to: "Bill", and: "Ted"))
+
+//sa default parametrom
+func funkyParameter(defaultParam: Int = 4){
+ print(defaultParam)
+}
+funkyParameter(5)
+funkyParameter()
+
+//Variadicni argumenti, moze se proslijediti proizvoljan broj argumenata u pozivu
+//func variadicFunk(param: Double...)->Double{}
+
+//In-out
+func swapTwoInts(inout a: Int, inout b:Int){
+    let tempA = a
+    a = b
+    b = tempA
+    
+}
+var firstint = 5
+var secondint = 6
+swapTwoInts(&firstint,b: &secondint)
+print("firstint is now \(firstint) and secondint is \(secondint)")
+
+//CLOSURE
+
+let greet = {(name: String)->Void in //in je keyword
+    print("Hi \(name)")
+}
+
+greet("Admir")
+
+//closure u funkciji
+
+func theClosureFunction(closure: ()->Void){
+    print("Hi ")
+    closure
+    print(" Aadma")
+}
+//tri nacina pozivanja
+theClosureFunction({
+    print("Admir")
+})
+theClosureFunction(){
+  print("Admir")
+    //ako je zadnji argument
+}
+theClosureFunction{
+print("Admir")
+    //ako je jedini argument
+}
+
+//ENUMERACIJA
+
+enum CompasPoint{
+    case East
+    case West
+    case North
+    case South
+}
+
+var whereToGo = CompasPoint.East
+whereToGo = .West
+
+func whereToHead(direction: CompasPoint){
+    switch direction{
+        case .North:
+        print("Wear Southpole jacket")
+        case .South:
+        print("Wear shorts")
+        default:
+        print("Take care")
+    }
+}
+whereToHead(.South)
+whereToHead(whereToGo)
+
+//int kao tip euma
+//dodjelili index 1 merkuru da ne pocinje od nule
+enum Planet: Int{
+    case Mercury = 1, Venus, Earth, Mars, Jupiter, Uranus, Saturn, Neptune
+}
+Planet.Earth.rawValue
