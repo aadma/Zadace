@@ -4,268 +4,104 @@ import UIKit
 
 var str = "Hello, playground"
 
-//strukture i klase
-
-struct Resolution{
-
-var width = 1360
-var height = 760
-    
-}
-
-class VideoMode{
- var resolution = Resolution()
-    
-var frameRate = 0.0
-    var videoName: String?
-}
-
-let objResolution = Resolution()
-let objVideoMode = VideoMode()
-objResolution.height
-
-let vga = Resolution(width: 640, height: 480)
-
-//Value type i referentni
-
-let hd = Resolution(width: 1920, height: 1080)
-var cinema = hd
-cinema.width = 1024
-hd.width
-cinema.width
-
-let tenEighty = VideoMode()
-tenEighty.videoName = "Neokino"
-tenEighty.resolution = hd
-let anotherTenEighty = tenEighty
-anotherTenEighty.frameRate = 30
-tenEighty.frameRate
-anotherTenEighty.frameRate
-
-let tenEighty1 = VideoMode()
 
 
-tenEighty === anotherTenEighty
 
-tenEighty === tenEighty1
+//ZADATAK
 
-//polja
+//dio 1
 
-struct SomeStructure {
-    var firstField: Int
-    let secondField: Int
-}
+//1)
 
-var instanceOfStructure = SomeStructure(firstField: 2, secondField: 5)
-instanceOfStructure.firstField
-
-//ako je instanca strukture konstanta onda se polja ne mogu mijenjati
-
-let anotherInstanceOfStructure = SomeStructure(firstField: 3, secondField: 7)
-//anotherInstanceOfStructure.firstField = 8 greska
-
-
-//lazy var
-
-class Image{
-    static func load1000Images() ->[Image]?{
-        //ko fol vraca 1000 slika
-        return nil
+struct Location{
+    var latitude: Double
+    var longitude: Double
+    init(){
+        latitude = Double(arc4random()%181) - 90.0
+        longitude = Double(arc4random()%361) - 90.0
     }
 }
+var coords = Location()
+coords.latitude
+coords.longitude
 
-class VideoManager{
- lazy var images = Image.load1000Images()
-    var albumName = "1000 images"
-}
+//2)
 
-//lazy vars nemaju vrijednost sve dok ih ne pozovemo
-let instanceOfVideoMAnager = VideoManager()
-instanceOfVideoMAnager.albumName
-instanceOfVideoMAnager.images
-
-
-//computed property
-
-struct Alpha{
-
-    var a = 0.0
-    
-    var square: Double{
+class Person{
+    var name: String
+    var lastName: String
+    var yearOfBirth: Int
+    var age: Int{
         get{
-         return 6 * a * a
+            return 2016 - yearOfBirth
         }
         set{
-         a = sqrt(newValue/6.0)
+         self.age = 2016 - newValue
         }
     }
-}
-var instanceOfAlpha = Alpha(a: 10.0)
-instanceOfAlpha.square // geter vratio
-instanceOfAlpha.square = 6  //seter izracunao
-instanceOfAlpha.a
-
-
-//static properties
-
-class Game{
-    static var gamesPlayed = 0
-    var gameScore = 0
-    
-    //inicijalizator koji povecava broj odigranih igara prilikom svakog instanciranja
-    init(){
-        Game.gamesPlayed += 1
-    }
-}
-var newGame = Game()
-newGame.gameScore = 70
-var anotherGame = Game()
-anotherGame.gameScore = 100
-Game.gamesPlayed //odigrane dvije igre
-var thirdGame = Game()
-Game.gamesPlayed // and so on
-
-
-
-struct Point {
-    var x = 0.0, y = 0.0
-    func isToTheRightOfX(x: Double) ->Bool{
-        return self.x > x //self se odnosi na property x a ne na argument funkcije i koristi se kad imaju isti naziv
-    }
-}
-let point = Point(x: 3, y: 2)
-point.isToTheRightOfX(1.0)
-
-//staticke metode
-
-class Game2{
-    static var gamesPlayed = 10
-    static func numberOfGames(){
-     print("There has been \(gamesPlayed) games played")
-    }
-}
-
-
-Game2.numberOfGames()
-Game2.gamesPlayed = 15
-Game2.numberOfGames()
-
-//nasljedjivanje
-
-class Vehicle{
-    var currentSpeed = 0
-    var description: String{
-        return "Is traveling at \(currentSpeed) kilometers per hour"
-    }
-    func makeNoise(){
-    
-    }
-}
-var golfVI = Vehicle()
-golfVI.currentSpeed = 120
-print(golfVI.description)
-
-
-class Bycicle: Vehicle{
-    var hasBasket = false
-}
-let someBycicle = Bycicle()
-someBycicle.hasBasket = true
-someBycicle.currentSpeed = 15
-print(someBycicle.description)
-
-
-//override(preklapanje)
-
-class Brum: Vehicle{
-    override func makeNoise() {
-        print("Brum brum")
-    }
-}
-let brum = Brum()
-brum.makeNoise() //nece ispisati u playgroundu
-
-class Car: Vehicle{
-    var gear = 1
-    override var description: String{
-        return super.description + " in gear \(gear)"
-        //kljucna rijec super poziva roditeljsku klasu
-    }
-}
-let car = Car()
-car.gear = 4
-car.currentSpeed = 70
-print(car.description)
-
-//inicijalizacija
-
-struct Farenheit{
-    var temperature: Double
-    init(){
-        temperature = 32.0
-    }
-}
-let farenheit = Farenheit()
-farenheit.temperature
-
-struct Celsius {
-    var temperatureInCelsius: Double
-    
-    //inicijalizacija sa parametrima
-    init(fromFarenheit farenheit: Double){
-        temperatureInCelsius = (farenheit - 32.0)/1.8
-    }
-    init(fromKelvin kelvin: Double){
-        temperatureInCelsius = kelvin - 273.15
-    }
-}
-let boilingPointOfWater = Celsius(fromFarenheit: 212.0)
-boilingPointOfWater.temperatureInCelsius
-
-let freezingPointOfWater = Celsius(fromKelvin: 273.15)
-freezingPointOfWater.temperatureInCelsius
-
-//convenience init(kad ne proslijedimo parametre prilikom instanciranja, u ovom slucaju ce da pozove prethodni init i dodjeli ime Unnamed)
-
-class Food {
-    var name: String
-    init(name: String){
+    var location: Location
+        init(name: String, lastName: String, yearOfBirth: Int, location: Location){
         self.name = name
+        self.lastName = lastName
+        self.yearOfBirth = yearOfBirth
+        self.location = location
+        }
+    convenience init(name: String, lastName: String){
+        self.init(name: name, lastName: lastName, yearOfBirth: 1990, location: coords)
+        
     }
-    convenience init(){
-        self.init(name: "[Unnamed]")
-        //delegiranje moguce samo u klasama
+        func introduction()-> String{
+        return "Hi my name is \(name) \(lastName) age \(age)"
     }
 }
-let foodWithParameter = Food(name: "chicken")
-let foodNoParameter = Food()
-foodWithParameter.name
-foodNoParameter.name
+let mirko = Person(name: "Mirko", lastName: "Babic", yearOfBirth: 1987, location: coords)
+let nedim = Person(name: "Nedim", lastName: "Sabic", yearOfBirth: 1982, location: coords)
+mirko.introduction()
+nedim.introduction()
 
-class Ingredients: Food{
-    var quantity: Int
-    init(name: String, quantity: Int){
-        self.quantity = quantity
-        super.init(name: name)
+//Dio 2
+
+//1)
+struct Course{
+    var teacher: Person
+    var courseName: String
+    func aboutCourse()->String{
+        return "\(courseName) course by prof. \(teacher.lastName)"
+    }
+}
+
+//2)
+
+class Student: Person{
+    var attendingCourses: [Course]
+    var grades: [Int]
+    var faculty = "WiP"
+    var averageGrade: Double{
+        get{
+            var total = 0
+            for grade in grades{
+                total += grade
+            }
+            return Double(total/grades.count)
+        }
+    }
+    init(name: String, lastName: String, yearOfBirth: Int, location: Location, attendingCourses: [Course], grades: [Int]){
+        self.attendingCourses = attendingCourses
+        self.grades = grades
+        super.init(name: name, lastName: lastName, yearOfBirth: yearOfBirth, location: location)
     }
     
-    override convenience init(name: String){
-        self.init(name: name, quantity: 1)
+    override func introduction() -> String {
+        return "Hi my name is \(name) \(lastName) age \(age)" + " I am a student at \(faculty)." + " My favourite course is \(attendingCourses.first!.aboutCourse())"
     }
-}
-let mysteryMeat = Ingredients()
-mysteryMeat.name
-mysteryMeat.quantity
-let favoriteMeat = Ingredients(name: "Chevapi", quantity: 10)
 
-struct Animal{
-    let species: String
-    init?(species: String){
-        if species.isEmpty{return nil}
-        self.species = species
-    }
 }
 
-let animal = Animal(species: "Cat")
+//3)
 
-let unknownAnimal = Animal(species: "")
+var iosDevelopment = Course(teacher: mirko, courseName: "iOS development")
+var seo = Course(teacher: nedim, courseName: "SEO")
+var courses = [seo, iosDevelopment]
+
+let student = Student(name: "Admir", lastName: "Halep", yearOfBirth: 1983, location: coords, attendingCourses: courses, grades: [9,10,9,8,10])
+student.introduction()
