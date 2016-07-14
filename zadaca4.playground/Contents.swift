@@ -17,13 +17,12 @@ struct Location{
     var latitude: Double
     var longitude: Double
     init(){
-        latitude = Double(arc4random()%181) - 90.0
-        longitude = Double(arc4random()%361) - 90.0
+        latitude = Double(arc4random() % 181) - 90.0
+        longitude = Double(arc4random() % 361) - 90.0
     }
 }
 var coords = Location()
-coords.latitude
-coords.longitude
+var newCoords = Location()
 
 //2)
 
@@ -32,12 +31,8 @@ class Person{
     var lastName: String
     var yearOfBirth: Int
     var age: Int{
-        get{
+        
             return 2016 - yearOfBirth
-        }
-        set{
-         self.age = 2016 - newValue
-        }
     }
     var location: Location
         init(name: String, lastName: String, yearOfBirth: Int, location: Location){
@@ -55,7 +50,7 @@ class Person{
     }
 }
 let mirko = Person(name: "Mirko", lastName: "Babic", yearOfBirth: 1987, location: coords)
-let nedim = Person(name: "Nedim", lastName: "Sabic", yearOfBirth: 1982, location: coords)
+let nedim = Person(name: "Nedim", lastName: "Sabic", yearOfBirth: 1982, location: newCoords)
 mirko.introduction()
 nedim.introduction()
 
@@ -66,14 +61,15 @@ struct Course{
     var teacher: Person
     var courseName: String
     func aboutCourse()->String{
-        return "\(courseName) course by prof. \(teacher.lastName)"
+        
+      return  "\(courseName) course by prof. \(teacher.lastName)"
     }
 }
 
 //2)
 
 class Student: Person{
-    var attendingCourses: [Course]
+    var attendingCourses: [Course]?
     var grades: [Int]
     var faculty = "WiP"
     var averageGrade: Double{
@@ -85,14 +81,19 @@ class Student: Person{
             return Double(total/grades.count)
         }
     }
-    init(name: String, lastName: String, yearOfBirth: Int, location: Location, attendingCourses: [Course], grades: [Int]){
+    init(name: String, lastName: String, yearOfBirth: Int, location: Location, attendingCourses: [Course]?, grades: [Int]){
         self.attendingCourses = attendingCourses
         self.grades = grades
         super.init(name: name, lastName: lastName, yearOfBirth: yearOfBirth, location: location)
     }
     
-    override func introduction() -> String {
-        return "Hi my name is \(name) \(lastName) age \(age)" + " I am a student at \(faculty)." + " My favourite course is \(attendingCourses.first!.aboutCourse())"
+    override func introduction() -> String{
+    var introduceStudent = "Hi my name is \(name) \(lastName) age \(age)" + " I am a student at \(faculty)."
+        if attendingCourses != nil{
+            introduceStudent += "My favourite course is \(attendingCourses!.first!.aboutCourse())"
+        }
+    
+     return introduceStudent
     }
 
 }
