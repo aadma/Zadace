@@ -57,6 +57,7 @@ class Person{
         return "Hi my name is \(name) \(lastName) age \(age)."
     }
 }
+
 let mirko = Person(name: "Mirko", lastName: "Babic", yearOfBirth: 1987, location: coords)
 let nedim = Person(name: "Nedim", lastName: "Sabic", yearOfBirth: 1982, location: newCoords)
 mirko.introduction()
@@ -88,9 +89,7 @@ class Student: Person{
         self.grades = grades
         super.init(name: name, lastName: lastName, yearOfBirth: yearOfBirth, location: location)
     }
-    
     override func introduction() -> String{
-    
         var introduceStudent = " I am a student at \(faculty)."
         if let attendingCourse = attendingCourses{
             introduceStudent += "My favourite course is \(attendingCourse.first!.aboutCourse())."
@@ -106,7 +105,6 @@ class Student: Person{
         }
         return super.introduction() + introduceStudent
     }
-    
 }
 
 var iosDevelopment = Course(teacher: mirko, courseName: "iOS development")
