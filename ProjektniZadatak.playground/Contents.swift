@@ -5,7 +5,6 @@
 import Foundation
 
 func delayedPrint(str: String){
-
     sleep(2)
     print(str)
 }
@@ -41,12 +40,22 @@ class Driver: Person, DrivingLicence{
     }
     func callMechanic(mechanic: Mechanic, toFixACar car: Car){
         if mechanic.authorizedServicerForLicenceTypes.contains(car.licenceType){
-            print("Mechanic responded he can fix this car")
+            delayedPrint("Mechanic responded he can fix this car")
             mechanic.fixCar(car)
+        }else{
+            delayedPrint("Mechanic responded he can not fix this car")
         }
     }
     func driveCar(){
-        car!.drive()
+        if let car = car{
+            if licences.contains(car.licenceType){
+                car.drive()
+            }else{
+                delayedPrint("You do not have a licence to drive this car")
+            }
+        }else{
+            delayedPrint("You do not possess a car to drive")
+        }
     }
 }
 
@@ -57,9 +66,9 @@ class Mechanic: Person{
         super.init(firstName: firstName, lastName: lastName, age: age)
     }
     func fixCar(car: Car){
-        print("\(super.firstName) is fixing the car")
+        delayedPrint("\(firstName) is fixing the car")
         car.broken = false
-        print("Car fixed")
+        delayedPrint("Car fixed")
     }
 }
 
@@ -98,20 +107,20 @@ class Car{
         engineOn = false
     }
     func drive(){
-        print("Starting engine")
+        delayedPrint("Starting engine")
         engineOn = true
         while engineOn == true{
             if broken == true{
-                print("Engine broke")
+                delayedPrint("Engine broke")
                 delegate?.engineBroke()
                 stop()
             }
             if fuelLevel == 10{
-                print("Low on fuel")
+                delayedPrint("Low on fuel")
                 delegate?.lowOnFuel()
             }
             guard fuelLevel > 0 else{
-                print("Empty fuel tank")
+                delayedPrint("Empty fuel tank")
                 delegate?.outOfFuel()
                 break
             }
@@ -124,31 +133,33 @@ class Car{
 
 extension Driver: CarMonitoringDelegate{
     func engineBroke() {
-        print("Engine broke")
-        callMechanic(mechanic!, toFixACar: car!)
+        delayedPrint("Engine broke")
+        if let mechanic = mechanic, car = car {
+            callMechanic(mechanic, toFixACar: car)
+        }
+        
     }
     func lowOnFuel() {
-        if arc4random_uniform(3)+1 == 1 || arc4random_uniform(3)+1 == 2{
-            print("I will add some gas now")
-            car!.fuelLevel = Int(arc4random_uniform(50)+10)
-            print("Added fuel.Curren fuel level \(car!.fuelLevel)")
-        }else{
-            print("I will add some gas later")
+        switch arc4random_uniform(2){
+            case 1,2:
+                delayedPrint("I will add some gas now")
+                car!.fuelLevel = Int(arc4random_uniform(55)+1)
+                delayedPrint("Added fuel.Curren fuel level \(car!.fuelLevel)")
+            default:
+                delayedPrint("I will add some gas later")
         }
     }
     func outOfFuel() {
-        print("I will add some gas now")
-        car!.fuelLevel = Int(arc4random_uniform(50)+10)
-        print("Added fuel.Current fuel level \(car!.fuelLevel)")
+        delayedPrint("I will add some gas now")
+        car!.fuelLevel = Int(arc4random_uniform(55)+1)
+        delayedPrint("Added fuel.Current fuel level \(car!.fuelLevel)")
     }
 }
 
 enum DrivingLicenceType{
-    case A
-    case B
-    case C
-    case D
+    case A, B, C, D
 }
+
 var admirsLicences: Set<DrivingLicenceType> = [DrivingLicenceType.A, DrivingLicenceType.B]
 var mechanicsLicences: Set<DrivingLicenceType> = [DrivingLicenceType.A, DrivingLicenceType.B, DrivingLicenceType.C]
 var admir = Driver(firstName: "Admir", lastName: "Halep", age: 32, licences: admirsLicences)
