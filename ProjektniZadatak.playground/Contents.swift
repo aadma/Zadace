@@ -137,7 +137,6 @@ extension Driver: CarMonitoringDelegate{
         if let mechanic = mechanic, car = car {
             callMechanic(mechanic, toFixACar: car)
         }
-        
     }
     func lowOnFuel() {
         switch arc4random_uniform(2){
