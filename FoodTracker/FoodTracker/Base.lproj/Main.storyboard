@@ -41,6 +41,7 @@
                                     <outlet property="nameLabel" destination="rZk-fE-IOd" id="d6P-XG-0w9"/>
                                     <outlet property="photoImageView" destination="FnU-vb-3uW" id="9MQ-Iu-89C"/>
                                     <outlet property="ratingControl" destination="Idt-5n-i86" id="Xuq-nM-EXu"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="ubK-qe-uIS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -110,7 +111,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Meal" id="AaJ-1G-ofi">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cWH-yQ-0Kh"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cWH-yQ-0Kh">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="n80-MH-Vl6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ThY-zm-yAy">
                             <connections>
                                 <segue destination="ZDl-wU-x1U" kind="unwind" unwindAction="unwindToMeallist:" id="J0g-yG-moD"/>
@@ -168,10 +173,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0L-J2-mBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="323"/>
+            <point key="canvasLocation" x="1706" y="679"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ubK-qe-uIS"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -16,7 +16,14 @@ class MealTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem = editButtonItem()
+        // If there are saved meals load them else load sample meals only
+        if let savedMeals = loadMeals(){
+            meals += savedMeals
+        }
+        else{
         loadSampleMeals()
+        }
     }
     
     func loadSampleMeals(){
@@ -62,25 +69,27 @@ class MealTableViewController: UITableViewController {
     }
  
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            meals.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            saveMeals()
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -97,21 +106,51 @@ class MealTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetail"{
+            let mealDetailViewController = segue.destinationViewController as! MealViewController
+            // get the cell that generated this segue
+            if let selectedMealCell = sender as? MealTableViewCell{
+                let indexPath = tableView.indexPathForCell(selectedMealCell)!
+                let selectedMeal = meals[indexPath.row]
+                mealDetailViewController.meal = selectedMeal
+            }
+        }
+        else if segue.identifier == "AddItem"{
+            print("Adding new meal")
+        }
     }
-    */
+    
     @IBAction func unwindToMeallist(sender: UIStoryboardSegue){
         if let sourceViewController = sender.sourceViewController as? MealViewController, meal = sourceViewController.meal{
-            //add a new meal
-            let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
-            meals.append(meal)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow{
+                // update meals
+                meals[selectedIndexPath.row] = meal
+                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+            }
+            else{
+                //add a new meal
+                let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
+                meals.append(meal)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            }
+            saveMeals()
         }
+    }
+    
+    // MARK: NSCoding save and load
+    
+    func saveMeals(){
+        let isSuccessfullSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArcihveURL.path!)
+        if isSuccessfullSave == false{
+            print("Failed to save data")
+        }
+    }
+    func loadMeals()->[Meal]?{
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArcihveURL.path!) as? [Meal]
     }
 }
