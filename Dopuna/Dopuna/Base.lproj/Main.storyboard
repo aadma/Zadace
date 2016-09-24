@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="M20-0p-c1L">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Contacts Table View Controller-->
+        <scene sceneID="DNr-zH-GLc">
+            <objects>
+                <tableViewController id="CQY-Z5-cQr" customClass="ContactsTableViewController" customModule="Dopuna" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="muw-Bx-0oz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactTableViewCell" textLabel="95u-EM-xnL" detailTextLabel="xwk-zV-dMN" style="IBUITableViewCellStyleSubtitle" id="L5E-tw-b7R">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L5E-tw-b7R" id="ceW-ij-Kxj">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="95u-EM-xnL">
+                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xwk-zV-dMN">
+                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="CQY-Z5-cQr" id="jka-hJ-qFJ"/>
+                            <outlet property="delegate" destination="CQY-Z5-cQr" id="4h1-KR-JIb"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xZQ-A3-qOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1895" y="99"/>
+        </scene>
+        <!--DOPUNA BIH-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Dopuna" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OI7-qj-dMy">
+                                <rect key="frame" x="21" y="164" width="558" height="29"/>
+                                <segments>
+                                    <segment title="m:tel"/>
+                                    <segment title="BH T"/>
+                                </segments>
+                                <color key="tintColor" red="0.32549019610000002" green="0.85882352939999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="telecomunicationsValueChangedSegControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="UUf-xU-jer"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gDf-kj-ffs">
+                                <rect key="frame" x="21" y="230" width="558" height="29"/>
+                                <segments>
+                                    <segment title="2 KM"/>
+                                    <segment title="3 KM"/>
+                                    <segment title="4 KM"/>
+                                    <segment title="5 KM"/>
+                                    <segment title="10 KM"/>
+                                </segments>
+                                <color key="tintColor" red="0.2729599123" green="0.86610858719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDF-9f-WaZ">
+                                <rect key="frame" x="21" y="310" width="558" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="tintColor" red="0.32549019610000002" green="0.85882352939999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="DOPUNI RACUN"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hya-lb-M8p">
+                                <rect key="frame" x="21" y="80" width="558" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Izaberite kontakt">
+                                    <color key="titleColor" red="0.2729599123" green="0.86610858719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CQY-Z5-cQr" kind="show" identifier="showContacts" id="KI2-Uk-mwK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="hya-lb-M8p" secondAttribute="trailing" constant="1" id="47k-Vd-aKg"/>
+                            <constraint firstItem="WDF-9f-WaZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="1" id="65r-Ua-tlD"/>
+                            <constraint firstItem="gDf-kj-ffs" firstAttribute="top" secondItem="OI7-qj-dMy" secondAttribute="bottom" constant="48" id="7O1-uc-2hd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hya-lb-M8p" secondAttribute="bottom" constant="482" id="Dlu-cO-AcN"/>
+                            <constraint firstItem="OI7-qj-dMy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="1" id="Ebo-Al-W5y"/>
+                            <constraint firstItem="gDf-kj-ffs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="1" id="UzK-Ne-91b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gDf-kj-ffs" secondAttribute="trailing" constant="1" id="VOD-tl-W1M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WDF-9f-WaZ" secondAttribute="trailing" constant="1" id="exT-Hf-XUI"/>
+                            <constraint firstItem="hya-lb-M8p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="1" id="fBi-t7-byS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OI7-qj-dMy" secondAttribute="trailing" constant="1" id="gTT-Yp-GJl"/>
+                            <constraint firstItem="OI7-qj-dMy" firstAttribute="top" secondItem="hya-lb-M8p" secondAttribute="bottom" constant="46" id="hU9-YC-EVY"/>
+                            <constraint firstItem="hya-lb-M8p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="q1i-Il-0sd"/>
+                            <constraint firstItem="WDF-9f-WaZ" firstAttribute="top" secondItem="gDf-kj-ffs" secondAttribute="bottom" constant="52" id="vh9-5c-OMD"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Dlu-cO-AcN"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="DOPUNA BIH" id="IrN-Kb-utg">
+                        <barButtonItem key="backBarButtonItem" title="Nazad" id="aRb-S9-0ko"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="amountSegControl" destination="gDf-kj-ffs" id="WZ8-GU-gD3"/>
+                        <outlet property="chooseContactButton" destination="hya-lb-M8p" id="flN-hi-zqY"/>
+                        <outlet property="sendMessageButton" destination="WDF-9f-WaZ" id="k0D-q2-kkR"/>
+                        <outlet property="telecomunicationsSegControl" destination="OI7-qj-dMy" id="3Aq-xb-7TH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1104" y="99"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GxJ-Z2-2Dk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="M20-0p-c1L" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jWg-BZ-Hc4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4on-5k-9Jm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="epO-DO-fxv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292" y="99"/>
+        </scene>
+    </scenes>
+</document>
