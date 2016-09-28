@@ -4,19 +4,20 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--Contacts Table View Controller-->
+        <!--ContactsTableViewController-->
         <scene sceneID="DNr-zH-GLc">
             <objects>
-                <tableViewController id="CQY-Z5-cQr" customClass="ContactsTableViewController" customModule="Dopuna" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="ContactsTableViewController" id="CQY-Z5-cQr" customClass="ContactsTableViewController" customModule="Dopuna" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="muw-Bx-0oz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactTableViewCell" textLabel="95u-EM-xnL" detailTextLabel="xwk-zV-dMN" style="IBUITableViewCellStyleSubtitle" id="L5E-tw-b7R">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L5E-tw-b7R" id="ceW-ij-Kxj">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -26,14 +27,14 @@
                                             <rect key="frame" x="15" y="5" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.12941176469999999" green="0.50588235290000005" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xwk-zV-dMN">
                                             <rect key="frame" x="15" y="25" width="41" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -45,10 +46,115 @@
                             <outlet property="delegate" destination="CQY-Z5-cQr" id="4h1-KR-JIb"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="KONTAKTI" id="iP3-zK-0e2">
+                        <barButtonItem key="backBarButtonItem" title="Nazad" id="pDk-fd-9tE"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="GZy-aG-GV1">
+                                <connections>
+                                    <segue destination="CCC-oz-VK5" kind="show" identifier="addNewContact" id="bAc-0V-4yy"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" id="69U-4o-UJH">
+                                <connections>
+                                    <action selector="editMode:" destination="CQY-Z5-cQr" id="g3h-rm-U5T"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZQ-A3-qOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895" y="99"/>
+            <point key="canvasLocation" x="1167" y="106"/>
+        </scene>
+        <!--DODAJ NOVI KONTAKT-->
+        <scene sceneID="5qL-KD-IBB">
+            <objects>
+                <viewController id="CCC-oz-VK5" customClass="NewContactViewController" customModule="Dopuna" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3hL-Wt-Ag6"/>
+                        <viewControllerLayoutGuide type="bottom" id="0RO-al-2zj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t4X-Qd-bVN">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="c7G-6d-5gw">
+                                <rect key="frame" x="20" y="91" width="560" height="44"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="44" image="icon contacts" translatesAutoresizingMaskIntoConstraints="NO" id="BLO-ii-dlW">
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-tK-aOO">
+                                        <rect key="frame" x="64" y="0.0" width="496" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="I4N-gy-I1y">
+                                <rect key="frame" x="20" y="161" width="560" height="44"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="44" image="icon phone" translatesAutoresizingMaskIntoConstraints="NO" id="bNj-BO-6H7">
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+387" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQ2-da-IB6">
+                                        <rect key="frame" x="64" y="0.0" width="41" height="44"/>
+                                        <color key="tintColor" red="0.12941176470588234" green="0.50588235294117645" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.12941176469999999" green="0.50588235290000005" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gz-Jt-HsX">
+                                        <rect key="frame" x="125" y="0.0" width="435" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7K-G9-9FI">
+                                <rect key="frame" x="20" y="245" width="560" height="36"/>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.85882352939999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="DODAJ NOVI RACUN"/>
+                                <connections>
+                                    <action selector="addContactBigButton:" destination="CCC-oz-VK5" eventType="touchUpInside" id="qhc-Hh-80W"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.12941176469999999" green="0.50588235290000005" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="I4N-gy-I1y" firstAttribute="top" secondItem="c7G-6d-5gw" secondAttribute="bottom" constant="26" id="7rv-85-LZy"/>
+                            <constraint firstItem="f7K-G9-9FI" firstAttribute="leading" secondItem="t4X-Qd-bVN" secondAttribute="leadingMargin" id="O1t-xM-73G"/>
+                            <constraint firstItem="c7G-6d-5gw" firstAttribute="top" secondItem="3hL-Wt-Ag6" secondAttribute="bottom" constant="27" id="OwN-h2-SAp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="I4N-gy-I1y" secondAttribute="trailing" id="RKp-4P-KRD"/>
+                            <constraint firstItem="f7K-G9-9FI" firstAttribute="top" secondItem="I4N-gy-I1y" secondAttribute="bottom" constant="40" id="fdn-dD-vUz"/>
+                            <constraint firstItem="c7G-6d-5gw" firstAttribute="leading" secondItem="t4X-Qd-bVN" secondAttribute="leadingMargin" id="gTE-ky-QmG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c7G-6d-5gw" secondAttribute="trailing" id="qzv-us-AoX"/>
+                            <constraint firstItem="f7K-G9-9FI" firstAttribute="top" secondItem="I4N-gy-I1y" secondAttribute="bottom" constant="40" id="rMw-C3-4u7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="f7K-G9-9FI" secondAttribute="trailing" id="tmj-HH-Vny"/>
+                            <constraint firstItem="I4N-gy-I1y" firstAttribute="leading" secondItem="t4X-Qd-bVN" secondAttribute="leadingMargin" id="vYm-n2-wvt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="DODAJ NOVI KONTAKT" id="M16-qo-2KC">
+                        <barButtonItem key="backBarButtonItem" title="Nazad" id="qOl-pW-b7I"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DnC-i7-7fl">
+                            <connections>
+                                <action selector="addContactSmallButton:" destination="CCC-oz-VK5" id="j52-ba-MwD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="nmB-tK-aOO" id="z4g-38-7Ng"/>
+                        <outlet property="numberTextfield" destination="3gz-Jt-HsX" id="Aqr-Yi-EzG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ak0-QH-BD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1936" y="106"/>
         </scene>
         <!--DOPUNA BIH-->
         <scene sceneID="tne-QT-ifu">
@@ -59,7 +165,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OI7-qj-dMy">
@@ -73,6 +179,25 @@
                                     <action selector="telecomunicationsValueChangedSegControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="UUf-xU-jer"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hya-lb-M8p">
+                                <rect key="frame" x="21" y="80" width="558" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Izaberite kontakt">
+                                    <color key="titleColor" red="0.2729599123" green="0.86610858719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CQY-Z5-cQr" kind="show" identifier="showContacts" id="YuZ-AT-dwX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDF-9f-WaZ">
+                                <rect key="frame" x="21" y="310" width="558" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="tintColor" red="0.32549019610000002" green="0.85882352939999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="DOPUNI RACUN"/>
+                                <connections>
+                                    <action selector="sendMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9IV-QP-RTR"/>
+                                </connections>
+                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gDf-kj-ffs">
                                 <rect key="frame" x="21" y="230" width="558" height="29"/>
                                 <segments>
@@ -84,22 +209,6 @@
                                 </segments>
                                 <color key="tintColor" red="0.2729599123" green="0.86610858719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDF-9f-WaZ">
-                                <rect key="frame" x="21" y="310" width="558" height="44"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="tintColor" red="0.32549019610000002" green="0.85882352939999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="DOPUNI RACUN"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hya-lb-M8p">
-                                <rect key="frame" x="21" y="80" width="558" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Izaberite kontakt">
-                                    <color key="titleColor" red="0.2729599123" green="0.86610858719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="CQY-Z5-cQr" kind="show" identifier="showContacts" id="KI2-Uk-mwK"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -135,14 +244,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104" y="99"/>
+            <point key="canvasLocation" x="396" y="99"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GxJ-Z2-2Dk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="M20-0p-c1L" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jWg-BZ-Hc4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jWg-BZ-Hc4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -153,7 +262,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epO-DO-fxv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="292" y="99"/>
+            <point key="canvasLocation" x="-444" y="79"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon contacts" width="22" height="22"/>
+        <image name="icon phone" width="22" height="22"/>
+    </resources>
 </document>

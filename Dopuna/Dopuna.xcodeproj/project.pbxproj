@@ -15,6 +15,7 @@
 		136A038E1D94804800881A4C /* DopunaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A038D1D94804800881A4C /* DopunaTests.swift */; };
 		136A03991D9487A000881A4C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03981D9487A000881A4C /* Contact.swift */; };
 		136A039A1D9487A000881A4C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03981D9487A000881A4C /* Contact.swift */; };
+		137039E61D99E7CA00E51225 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137039E51D99E7CA00E51225 /* NewContactViewController.swift */; };
 		1376CCA31D95DAC1005F8A0A /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376CCA21D95DAC1005F8A0A /* ContactsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		136A038D1D94804800881A4C /* DopunaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DopunaTests.swift; sourceTree = "<group>"; };
 		136A038F1D94804800881A4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		136A03981D9487A000881A4C /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		137039E51D99E7CA00E51225 /* NewContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 		1376CCA21D95DAC1005F8A0A /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				136A037A1D94804700881A4C /* MainViewController.swift */,
 				136A03981D9487A000881A4C /* Contact.swift */,
 				136A037C1D94804800881A4C /* Main.storyboard */,
+				137039E51D99E7CA00E51225 /* NewContactViewController.swift */,
 				1376CCA21D95DAC1005F8A0A /* ContactsTableViewController.swift */,
 				136A037F1D94804800881A4C /* Assets.xcassets */,
 				136A03811D94804800881A4C /* LaunchScreen.storyboard */,
@@ -153,6 +156,7 @@
 				TargetAttributes = {
 					136A03741D94804700881A4C = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = ZVF42P49V7;
 					};
 					136A03881D94804800881A4C = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -205,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				136A03991D9487A000881A4C /* Contact.swift in Sources */,
+				137039E61D99E7CA00E51225 /* NewContactViewController.swift in Sources */,
 				1376CCA31D95DAC1005F8A0A /* ContactsTableViewController.swift in Sources */,
 				136A037B1D94804700881A4C /* MainViewController.swift in Sources */,
 				136A03791D94804700881A4C /* AppDelegate.swift in Sources */,
@@ -337,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Dopuna/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.admirwip.Dopuna;
@@ -348,6 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Dopuna/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.admirwip.Dopuna;

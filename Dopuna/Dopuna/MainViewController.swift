@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class MainViewController: UIViewController, ContactSelectedDelegate {
+import MessageUI
+class MainViewController: UIViewController, ContactSelectedDelegate, MFMessageComposeViewControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: Properties
     
@@ -21,7 +21,7 @@ class MainViewController: UIViewController, ContactSelectedDelegate {
     @IBOutlet weak var sendMessageButton: UIButton!
     
    var contact: Contact?
-    
+   
     let mtel = [2,3,4,5,10]
     let bht = [1,2,5,10,20]
     
@@ -43,21 +43,54 @@ class MainViewController: UIViewController, ContactSelectedDelegate {
             sendMessageButton.layer.borderWidth = 1
             sendMessageButton.layer.cornerRadius = 6
             sendMessageButton.layer.borderColor = greenBlueBorder
-        if let contact = contact{
-            chooseContactButton.setTitle(contact.name, forState: .Normal)
-        }
         
     }
-    
-    func selectedContact(contact: Contact) {
+    func selectedContact(contact: Contact){
+        if contact.name != ""{
+            chooseContactButton.setTitle(contact.name, forState: .Normal)
+        }
+        else{
+            chooseContactButton.setTitle(contact.phoneNumber, forState: .Normal)
+        }
+        
+        
         self.contact = contact
-        print("\(contact.name)")
+        
+        let pozivni = contact.phoneNumber.substringToIndex(contact.phoneNumber.startIndex.advancedBy(5))
+        switch pozivni {
+        case "38760", "38761", "38762":
+            telecomunicationsSegControl.setEnabled(true, forSegmentAtIndex: 1)
+            telecomunicationsSegControl.selectedSegmentIndex = 1
+            for i in 0...amountSegControl.numberOfSegments - 1{
+                amountSegControl.setTitle("\(bht[i]) KM", forSegmentAtIndex: i)
+                
+            }
+            telecomunicationsSegControl.setEnabled(false, forSegmentAtIndex: 0)
+        case "38765", "38766":
+            telecomunicationsSegControl.setEnabled(true, forSegmentAtIndex: 0)
+            telecomunicationsSegControl.selectedSegmentIndex = 0
+            for i in 0...amountSegControl.numberOfSegments - 1{
+                amountSegControl.setTitle("\(mtel[i]) KM", forSegmentAtIndex: i)
+                
+            }
+            telecomunicationsSegControl.setEnabled(false, forSegmentAtIndex: 1)
+        default:
+            print("")
+        }
     }
-
-    override func didReceiveMemoryWarning() {
+        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let tableViewController = segue.destinationViewController as? ContactsTableViewController{
+            tableViewController.delegate = self
+        }
+    }
+    
     
     
     // MARK: Actions
@@ -78,6 +111,39 @@ class MainViewController: UIViewController, ContactSelectedDelegate {
         default:
             print("unknown telecom")
         }
+    }
+    
+    @IBAction func sendMessage(sender: UIButton) {
+        if contact != nil{
+            if !MFMessageComposeViewController.canSendText(){
+                let alertController = UIAlertController(title: "Greska", message: "Ovaj uredjaj ne moze slati poruke", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "OK", style: .Default){
+                    (action: UIAlertAction) in print("Pritisnuli ste OK dugme")
+                }
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+            else{
+                let composeVC = MFMessageComposeViewController()
+                composeVC.messageComposeDelegate = self
+                switch telecomunicationsSegControl.selectedSegmentIndex {
+                case 0:
+                    composeVC.recipients = ["0651110"]
+                    composeVC.body = "D\(mtel[amountSegControl.selectedSegmentIndex]) \(contact!.phoneNumber)"
+                case 1:
+                    composeVC.recipients = ["0611171"]
+                    composeVC.body = "\(bht[amountSegControl.selectedSegmentIndex]) \(contact!.phoneNumber)"
+                
+                default:
+                print("Morate izabrati slanje kredita")
+                }
+                self.presentViewController(composeVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
