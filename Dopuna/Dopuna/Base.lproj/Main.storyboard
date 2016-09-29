@@ -179,16 +179,6 @@
                                     <action selector="telecomunicationsValueChangedSegControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="UUf-xU-jer"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hya-lb-M8p">
-                                <rect key="frame" x="21" y="80" width="558" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Izaberite kontakt">
-                                    <color key="titleColor" red="0.2729599123" green="0.86610858719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="CQY-Z5-cQr" kind="show" identifier="showContacts" id="YuZ-AT-dwX"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDF-9f-WaZ">
                                 <rect key="frame" x="21" y="310" width="558" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -207,8 +197,19 @@
                                     <segment title="5 KM"/>
                                     <segment title="10 KM"/>
                                 </segments>
-                                <color key="tintColor" red="0.2729599123" green="0.86610858719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.32549019607843138" green="0.85882352941176465" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hya-lb-M8p">
+                                <rect key="frame" x="21" y="80" width="558" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="tintColor" red="0.32549019610000002" green="0.85882352939999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Izaberite kontakt">
+                                    <color key="titleColor" red="0.32549019607843138" green="0.85882352941176465" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CQY-Z5-cQr" kind="show" identifier="showContacts" id="YuZ-AT-dwX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
