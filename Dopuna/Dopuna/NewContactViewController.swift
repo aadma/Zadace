@@ -18,14 +18,21 @@ class NewContactViewController: UIViewController {
     
     @IBOutlet weak var numberTextfield: UITextField!
     
+    @IBOutlet weak var createContactButton: UIButton!
    
     weak var delegate: NewContactProtocol?
   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        let greenBlue = UIColor(red: 83/255, green: 219/255, blue: 207/255, alpha: 1).CGColor
+        nameTextField.layer.borderWidth = 1
+        nameTextField.layer.borderColor = greenBlue
+        nameTextField.layer.cornerRadius = 5
+        numberTextfield.layer.borderWidth = 1
+        numberTextfield.layer.borderColor = greenBlue
+        numberTextfield.layer.cornerRadius = 5
+        createContactButton.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {
