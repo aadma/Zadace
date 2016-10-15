@@ -65,10 +65,9 @@ class ContactsTableViewController: UITableViewController, NewContactProtocol {
         
          let selectedContactInTable = contacts[indexPath.row]
         
-           
-            let selectedcell = tableView.cellForRowAtIndexPath(indexPath)!
+         let selectedcell = tableView.cellForRowAtIndexPath(indexPath)!
         
-                selectedcell.accessoryType = .Checkmark
+         selectedcell.accessoryType = .Checkmark
                 
         delegate?.selectedContact(selectedContactInTable)
 
