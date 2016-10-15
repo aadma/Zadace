@@ -15,10 +15,6 @@ class ContactsTableViewController: UITableViewController, NewContactProtocol {
     var contacts = [Contact]()
     weak var delegate: ContactSelectedDelegate?
     
-
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let savedContacts = loadContacts(){
@@ -27,12 +23,6 @@ class ContactsTableViewController: UITableViewController, NewContactProtocol {
         else{
         loadSampleContacts()
         }
-        // Uncomment the following line to preserve selection between presentations
-       // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view
-        //let addBtn: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: nil)
-        //self.navigationItem.setRightBarButtonItems([addBtn ,self.editButtonItem()], animated: true)
     }
     func loadSampleContacts(){
         let contact1 = Contact(name: "Admir", phoneNumber: "38761123123")!
@@ -96,8 +86,6 @@ class ContactsTableViewController: UITableViewController, NewContactProtocol {
         return true
     }
  
-
-    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -110,29 +98,9 @@ class ContactsTableViewController: UITableViewController, NewContactProtocol {
         }    
     }
     
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-    
-    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
                 
      if let newContactsController = segue.destinationViewController as? NewContactViewController{
         newContactsController.delegate = self
