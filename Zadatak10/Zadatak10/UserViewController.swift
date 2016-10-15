@@ -20,12 +20,7 @@ class UserViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
     @IBAction func save(_ sender: UIButton) {
         guard nameTextField.text?.isEmpty == false && emailTextField.text?.isEmpty == false else {
             return
