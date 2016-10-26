@@ -21,7 +21,7 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cZW-7T-2kM">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="328" id="Oxn-ER-Efp"/>
+                                    <constraint firstAttribute="height" constant="265" id="Wrh-BG-QPk"/>
                                 </constraints>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C1K-2T-A1Q">
@@ -31,18 +31,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eHz-s6-sEh" id="V34-wl-bs2">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vSf-bz-0gS">
-                                                    <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
+                                                    <frame key="frameInset" minX="15" minY="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hcw-zk-S2F">
-                                                    <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
+                                                    <frame key="frameInset" minX="15" minY="25.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -57,13 +57,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cZW-7T-2kM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7qH-ch-QzT"/>
-                            <constraint firstItem="C1K-2T-A1Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9Hd-zN-pd7"/>
-                            <constraint firstItem="C1K-2T-A1Q" firstAttribute="top" secondItem="cZW-7T-2kM" secondAttribute="bottom" id="RlE-IF-h9f"/>
-                            <constraint firstItem="cZW-7T-2kM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="r1G-Mr-TQa"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C1K-2T-A1Q" secondAttribute="bottom" id="rIp-v5-d8h"/>
-                            <constraint firstAttribute="trailing" secondItem="C1K-2T-A1Q" secondAttribute="trailing" id="swq-ci-iL9"/>
-                            <constraint firstAttribute="trailing" secondItem="cZW-7T-2kM" secondAttribute="trailing" id="z7K-sM-6Su"/>
+                            <constraint firstItem="C1K-2T-A1Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BHx-WJ-aX9"/>
+                            <constraint firstAttribute="trailing" secondItem="C1K-2T-A1Q" secondAttribute="trailing" id="Cf6-i0-4x7"/>
+                            <constraint firstItem="cZW-7T-2kM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="J7Y-UL-pbE"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C1K-2T-A1Q" secondAttribute="bottom" id="L88-x0-FTZ"/>
+                            <constraint firstItem="cZW-7T-2kM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XgE-fX-tYe"/>
+                            <constraint firstAttribute="trailing" secondItem="cZW-7T-2kM" secondAttribute="trailing" id="gxG-Sm-lRm"/>
+                            <constraint firstItem="C1K-2T-A1Q" firstAttribute="top" secondItem="cZW-7T-2kM" secondAttribute="bottom" constant="8" id="hO1-5f-Swp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ve0-3z-hg8">
