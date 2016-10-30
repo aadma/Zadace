@@ -94,7 +94,7 @@ class UsersViewController: UIViewController, MKMapViewDelegate {
                         
                     }
                     DispatchQueue.main.sync {
-                         self.putUsersOnMap()
+                        self.putUsersOnMap()
                         self.tableView.reloadData()
                     }
                 }catch{
@@ -114,7 +114,7 @@ class UsersViewController: UIViewController, MKMapViewDelegate {
             let btn = UIButton(type: .detailDisclosure)
             btn.addTarget(self, action: #selector(UsersViewController.displayUser), for: UIControlEvents.touchUpInside)
             annotationView!.rightCalloutAccessoryView = btn
-        }else{
+        } else {
             annotationView!.annotation = annotation
             
         }
@@ -123,17 +123,17 @@ class UsersViewController: UIViewController, MKMapViewDelegate {
 
     
     func putUsersOnMap(){
-        
         for user in users{
             let annotation = MKPointAnnotation()
-            let lat = user.address?.geo?.lat
-            let lng = user.address?.geo?.lng
-            let coordinate = CLLocationCoordinate2DMake(Double(lat!)!, Double(lng!)!)
-            annotation.coordinate = coordinate
+            if let lat = Double((user.address?.geo?.lat)!), let lng = Double((user.address?.geo?.lng)!){
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                annotation.coordinate = coordinate
+            }
             annotation.title = user.name
-            annotation.subtitle = (user.address?.street)! + ", " + (user.address?.city)!
+            if let street = user.address?.street, let city = user.address?.city{
+                annotation.subtitle = street + ", " + city
+            }
             mapView.addAnnotation(annotation)
-            
         }
         showUsersLocation(user: users.first!)
     }
@@ -155,7 +155,6 @@ class UsersViewController: UIViewController, MKMapViewDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
-        
     }
     
     @IBAction func sort(_ sender: UIBarButtonItem) {
@@ -167,10 +166,8 @@ class UsersViewController: UIViewController, MKMapViewDelegate {
     
     func displayUser(){
         performSegue(withIdentifier: "showUserSegue", sender: self)
-        
     }
 
-    
     struct SortedUser{
         var name: String?
         var distanceFromUser: Double?
@@ -236,7 +233,6 @@ extension UsersViewController: CLLocationManagerDelegate{
         sorted = true
         locationManager.stopUpdatingLocation()
         tableView.reloadData()
-
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

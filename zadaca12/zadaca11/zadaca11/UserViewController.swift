@@ -20,15 +20,14 @@ class UserViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-         user = UserProfile.shared.userProfile
+        user = UserProfile.shared.userProfile
         nameLabel.text = user.name
         let rand = Int(arc4random_uniform(2) + 1)
         if rand == 2{
         icon.image = #imageLiteral(resourceName: "icon1")
-        }else{
+        } else {
         icon.image = #imageLiteral(resourceName: "icon2")
         }
-        
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,7 +53,9 @@ class UserViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             cell.detailTextLabel?.text = user.email
         case 3:
             cell.textLabel?.text = "Address"
-            cell.detailTextLabel?.text = (user.address?.street!)! + ", " + (user.address?.city!)!
+            if let street = user.address?.street, let city = user.address?.city{
+                cell.detailTextLabel?.text = street + ", " + city
+            }
         case 4:
             cell.textLabel?.text = "Phone"
             cell.detailTextLabel?.text = user.phone
@@ -63,8 +64,9 @@ class UserViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             cell.detailTextLabel?.text = user.website
         case 6:
             cell.textLabel?.text = "Company"
-            cell.detailTextLabel?.text = user.company?.name
-    
+            if let companyName = user.company?.name{
+                cell.detailTextLabel?.text = companyName
+            }
         default: break
         }
         return cell
